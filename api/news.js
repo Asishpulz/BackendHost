@@ -24,7 +24,7 @@ export default async function handler(req, res) {
   } else if (category) {
     url = `https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
   } else {
-    url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
+    url = `https://newsapi.org/v2/top-headlines?sources=cnn,abc-news,bbc-news&language=en&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
   }
 
   try {
