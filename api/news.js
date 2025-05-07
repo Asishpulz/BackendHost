@@ -18,13 +18,13 @@ export default async function handler(req, res) {
   }
 
   let url = "";
-
   if (query) {
     url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=en&sortBy=${sortBy || 'relevancy'}&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
-  } else if (category) {
+  } else if (category && category !== "general") {
     url = `https://newsapi.org/v2/top-headlines?category=${category}&language=en&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
   } else {
-    url = `https://newsapi.org/v2/top-headlines?sources=cnn,abc-news,bbc-news&language=en&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
+    // default homepage - featured sources
+    url = `https://newsapi.org/v2/top-headlines?sources=cnn,abc-news,bbc-news&pageSize=${pageSize || 10}&page=${page || 1}&apiKey=${apiKey}`;
   }
 
   try {
